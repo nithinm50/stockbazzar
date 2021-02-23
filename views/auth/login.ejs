@@ -1,0 +1,28 @@
+<%- include('../includes/header.ejs') %>
+<main>
+    <div class="content__wrapper">
+        <section class="banner__sect" style="background-image: url('images/banner.png');">
+            <div class="authBox">
+                <div class="auth__container">
+                    <div class="auth__heading">
+                        <img src="images/logo.png" alt="">
+                    </div>
+                    <span class="auth__subtext">Login with your email & password</span>
+                    <% if (errorMessage) { %>
+                        <span class="auth__errtext"><%= errorMessage %></span>
+                    <% } %>
+                    <form action="/login" id="form" method="post">
+                        <input type="email" name="email" class="form-control" placeholder="Email Address" value="<%= oldInput.email %>">
+                        <input type="password" name="password" class="form-control" placeholder="Password" value="<%= oldInput.password %>">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <input type="submit" class="btn btn-primary btn-block" value="Login">
+                    </form>
+                </div>
+                <div class="auth__reset">
+                    <p class="auth__text">Forgot your password? <a href="#">Reset It</a></p>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<%- include('../includes/footer.ejs') %>

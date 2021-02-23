@@ -1,0 +1,68 @@
+<%- include('../includes/header.ejs') %>
+<%- include('../includes/admin/nav.ejs') %>
+<main id="root">
+    <div class="content__wrapper">
+        <div class="stock__card">
+            <h1 class="stock__title"><%= item.price.longName %> <span>(<%= item.price.symbol %>)</span></h1>
+            <h4 class="stock__curr_price"><%= item.financialData.currentPrice %> <span>(<%= item.price.regularMarketChange %>)</span> <span><%= item.price.currency%></span></h4>
+        </div>
+        <div class="tabs">
+            <div class="summary">
+                <div class="item">
+                    <div class="text">Previous close</div>
+                    <div class="value"><%= item.summaryDetail.previousClose %></div>
+                </div>
+                <div class="item">
+                    <div class="text">open</div>
+                    <div class="value"><%= item.summaryDetail.open %></div>
+                </div>
+                <div class="item">
+                    <div class="text">Volume</div>
+                    <div class="value"><%= item.price.regularMarketVolume %></div>
+                </div>
+                <div class="item">
+                    <div class="text">Avg. volume</div>
+                    <div class="value"><%= item.summaryDetail.averageVolume %></div>
+                </div>
+                <div class="item">
+                    <div class="text">Market cap</div>
+                    <div class="value"><%= item.price.marketCap %></div>
+                </div>
+                <div class="item">
+                    <div class="text">Beta</div>
+                    <div class="value"><%= item.summaryDetail.beta %></div>
+                </div>
+                <div class="item">
+                    <div class="text">PE ratio (TTM)</div>
+                    <div class="value"><%= item.summaryDetail.trailingPE %></div>
+                </div>
+                <div class="item">
+                    <div class="text">Market cap</div>
+                    <div class="value"><%= item.price.marketCap %></div>
+                </div>
+                <div class="item">
+                    <div class="text">dividend & yield</div>
+                    <div class="value"><%= item.summaryDetail.dividendRate %></div>
+                </div>
+                <div class="item">
+                    <div class="text">ROE</div>
+                    <div class="value"><%= item.financialData.returnOnEquity %></div>
+                </div>
+                <div class="item">
+                    <div class="text">Debt To Equity</div>
+                    <div class="value"><%= item.financialData.debtToEquity %></div>
+                </div>
+                <div class="item">
+                    <div class="text">Reserves</div>
+                    <div class="value"><%= item.financialData.totalRevenue %></div>
+                </div>
+                <div class="item">
+                    <div class="text">Debt</div>
+                    <div class="value"><%= item.financialData.totalDebt %></div>
+                </div>
+            </div>
+        </div>
+        <p><%= item.financialData.regularMarketChange %></p>
+    </div>
+</main>
+<%- include('../includes/footer.ejs') %>

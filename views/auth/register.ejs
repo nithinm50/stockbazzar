@@ -1,0 +1,42 @@
+<%- include('../includes/header.ejs') %>
+<main>
+    <div class="content__wrapper">
+        <section class="banner__sect" style="background-image: url('images/banner.png');">
+            <div class="authBox">
+                <div class="auth__container">
+                    <div class="auth__heading">
+                        <img src="images/logo.png" alt="">
+                    </div>
+                    <span class="auth__subtext"><b>Create Account</b></span>
+                    <% if (errorMessage) { %>
+                        <span class="auth__errtext"><%= errorMessage %></span>
+                    <% } %>
+                    <form action="/register" id="form" method="post">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" name="name" class="form-control <%= validationErrors.find(e => e.param === 'name') ? 'error' : '' %>" value="<%= oldInput.name %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" name="email" class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'error' : '' %>" value="<%= oldInput.email %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'error' : '' %>" value="<%= oldInput.password %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="repassword">Repeat Password</label>
+                            <input type="password" name="repassword" class="form-control <%= validationErrors.find(e => e.param === 'repassword') ? 'error' : '' %>" value="<%= oldInput.repassword %>">
+                        </div>
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <input type="submit" class="btn btn-primary btn-block" value="Sign Up">
+                    </form>
+                    <div class="auth__info">
+                        <p class="auth__text">Already Have an account? <a href="#">Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<%- include('../includes/footer.ejs') %>

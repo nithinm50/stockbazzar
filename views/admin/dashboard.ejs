@@ -1,0 +1,45 @@
+<%- include('../includes/admin/header.ejs') %>
+<%- include('../includes/admin/nav.ejs') %>
+<main id="root">
+    <div class="container-fluid mt-6">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                      <h3 class="mb-0">Stocks symbols and Company Details</h3>
+                    </div>
+                    <div class="table-responsive py-4">
+                      <% if (stock.length > 0) { %>
+                      <table class="table table-flush" id="datatable-basic">
+                        <thead class="thead-light">
+                          <tr>
+                            <th>Name</th>
+                            <th>Symbol</th>
+                            <th>View</th>
+                          </tr>
+                        </thead>
+                        <tfoot>
+                          <tr>
+                            <th>Name</th>
+                            <th>Symbol</th>
+                            <th>View</th>
+                          </tr>
+                        </tfoot>
+                        <tbody>
+                            <% for (let s of stock) { %>
+                           <tr>
+                                <td><%= s.name %></td>
+                                <td><%= s.symbol %></td>
+                                <td><a href="/stock/info?p=<%= s.symbol %>">Show Details</a></td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                      </table>
+                      <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<%- include('../includes/admin/footer.ejs') %>
